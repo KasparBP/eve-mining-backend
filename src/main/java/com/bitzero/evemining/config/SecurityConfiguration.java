@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
+import org.springframework.web.cors.CorsConfiguration;
 
 
 @Configuration
@@ -21,6 +22,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.cors()
+                .configurationSource(request -> {
+                    CorsConfiguration corsConfiguration = new CorsConfiguration()
+                            .applyPermitDefaultValues();
+                    corsConfiguration.addAllowedOrigin("localhost:3000");
+                    return corsConfiguration;
+                });
         httpSecurity
                 .rememberMe().rememberMeServices(rememberMeServices())
                 .and()
@@ -45,6 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             request.getSession().setAttribute("error.message", exception.getMessage());
                             //handler.onAuthenticationFailure(request, response, exception);
                         })
+                        .defaultSuccessUrl("http://localhost:3000")
                 )
         .oauth2Client()
 
