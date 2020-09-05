@@ -13,6 +13,8 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
 import org.springframework.web.cors.CorsConfiguration;
 
+import java.util.Collections;
+
 
 @Configuration
 @EnableOAuth2Client
@@ -26,7 +28,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .configurationSource(request -> {
                     CorsConfiguration corsConfiguration = new CorsConfiguration()
                             .applyPermitDefaultValues();
-                    corsConfiguration.addAllowedOrigin("localhost:3000");
+                    corsConfiguration.setAllowedOrigins(Collections.singletonList("*"));
+                    corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
+                    corsConfiguration.setAllowCredentials(true);
                     return corsConfiguration;
                 });
         httpSecurity
