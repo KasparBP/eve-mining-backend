@@ -28,6 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .configurationSource(request -> {
                     CorsConfiguration corsConfiguration = new CorsConfiguration()
                             .applyPermitDefaultValues();
+                    // TODO load from configuration
                     corsConfiguration.setAllowedOrigins(Collections.singletonList("*"));
                     corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
                     corsConfiguration.setAllowCredentials(true);
@@ -45,11 +46,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 )
                 .csrf(c -> c
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                        //.disable()
                 )
                 .logout(l -> l
                         .logoutSuccessUrl("/").permitAll()
-                        //authorizedClientService.removeAuthorizedClient(userService.)
                         .invalidateHttpSession(true)
                 )
                 .oauth2Login(o -> o
@@ -57,6 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             request.getSession().setAttribute("error.message", exception.getMessage());
                             //handler.onAuthenticationFailure(request, response, exception);
                         })
+                        // TODO change this
                         .defaultSuccessUrl("http://localhost:3000")
                 )
         .oauth2Client()
