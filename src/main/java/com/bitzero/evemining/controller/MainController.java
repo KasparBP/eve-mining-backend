@@ -1,4 +1,4 @@
-package com.bitzero.evemining.controllers;
+package com.bitzero.evemining.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -32,6 +32,7 @@ public class MainController {
         }
         return "redirect:/login?logout=true";
     }
+
     @GetMapping("/error")
     public String error(HttpServletRequest request) {
         String message = (String) request.getSession().getAttribute("error.message");

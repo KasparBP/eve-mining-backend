@@ -20,7 +20,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '10'
 sourceSets {
 	main {
-		java.srcDirs += "$buildDir/generated"
+		java.srcDirs += "$buildDir/generated/src/main/java"
 	}
 }
 
@@ -44,6 +44,9 @@ dependencies {
 	compile 'org.springframework.security:spring-security-oauth2-client:5.3.2.RELEASE'
 	compile 'org.springframework.security:spring-security-core:5.3.2.RELEASE'
 	compile 'org.springframework.boot:spring-boot-starter-webflux:2.3.3.RELEASE'
+	compile 'io.swagger:swagger-annotations:1.5.22'
+	compile 'org.openapitools:jackson-databind-nullable:0.2.1'
+	compile 'com.google.code.findbugs:jsr305:3.0.2'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
