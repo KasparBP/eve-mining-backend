@@ -39,6 +39,6 @@ public class ApiConfig {
     CoreClient coreClient(WebClient webClient, ObjectMapper objectMapper, DateFormat esiDateFormat,
                           @Value("${evemining.useragent}") String userAgent,
                           @Value("${evemining.esibasepath}") String basePath) {
-        return new CoreClient(webClient, objectMapper, esiDateFormat, userAgent, basePath);
+        return new CoreClient(webClient, objectMapper, esiDateFormat, basePath, userAgent);
     }
 }
