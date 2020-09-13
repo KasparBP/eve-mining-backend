@@ -37,7 +37,7 @@ public class CharacterClient {
         if (ifNoneMatch != null) {
             headerParams = Collections.singletonMap("If-None-Match", ifNoneMatch);
         }
-        return coreClient.perform("/v4/characters/{character_id}/portrait/", HttpMethod.GET, pathParams, headerParams,
+        return coreClient.perform("/v2/characters/{character_id}/portrait/", HttpMethod.GET, pathParams, headerParams,
                 defaultQueryParams(esiDataSource), null, GetCharactersCharacterIdPortraitOk.class, true);
     }
 

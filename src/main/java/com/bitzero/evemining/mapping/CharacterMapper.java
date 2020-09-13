@@ -22,7 +22,7 @@ public class CharacterMapper {
     }
 
     private static Portrait portraitFrom(GetCharactersCharacterIdPortraitOk charIdPortraitOk) {
-        if (charIdPortraitOk != null) {
+        if (charIdPortraitOk == null) {
             return null;
         }
         return Portrait.builder()

@@ -23,6 +23,7 @@ public class CharacterController {
     @GetMapping
     public Character character(@AuthenticationPrincipal OAuth2User principal) {
         Integer characterID = principal.getAttribute("CharacterID");
+        // TODO Error handling!
         GetCharactersCharacterIdOk characterInfo = characterClient.getCharacterInfo(characterID, null).getBody();
         GetCharactersCharacterIdPortraitOk portrait = characterClient.getCharacterPortrait(characterID, null).getBody();
         return CharacterMapper.characterFrom(characterInfo, portrait);
