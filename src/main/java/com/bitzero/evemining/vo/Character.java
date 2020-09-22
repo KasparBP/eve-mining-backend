@@ -8,6 +8,7 @@ import java.time.ZonedDateTime;
 @Data
 @Builder
 public class Character {
+    private Integer id;
     private Integer allianceId;
     private Integer corporationId;
     private ZonedDateTime birthday;

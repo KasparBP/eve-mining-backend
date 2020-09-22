@@ -7,11 +7,13 @@ import org.openapitools.client.model.GetCharactersCharacterIdPortraitOk;
 public class CharacterMapper {
 
     public static com.bitzero.evemining.vo.Character characterFrom(GetCharactersCharacterIdOk charIdOk,
-                                          GetCharactersCharacterIdPortraitOk charIdPortraitOk) {
+                                                                   GetCharactersCharacterIdPortraitOk charIdPortraitOk,
+                                                                   Integer characterID) {
         if (charIdOk == null) {
             return null;
         }
         return com.bitzero.evemining.vo.Character.builder()
+                .id(characterID)
                 .allianceId(charIdOk.getAllianceId())
                 .corporationId(charIdOk.getCorporationId())
                 .name(charIdOk.getName())

@@ -26,7 +26,7 @@ public class CharacterController {
         // TODO Error handling!
         GetCharactersCharacterIdOk characterInfo = characterClient.getCharacterInfo(characterID, null).getBody();
         GetCharactersCharacterIdPortraitOk portrait = characterClient.getCharacterPortrait(characterID, null).getBody();
-        return CharacterMapper.characterFrom(characterInfo, portrait);
+        return CharacterMapper.characterFrom(characterInfo, portrait, characterID);
     }
 
 }
